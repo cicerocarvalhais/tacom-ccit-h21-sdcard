@@ -1,0 +1,18 @@
+/cache/recovery/parted -s /dev/block/mmcblk0 -- \
+        mklabel gpt \
+	mkpart primary 1048576B 5242879B \
+	mkpart primary 5242880B 9437183B \
+	mkpart primary 9437184B 13631487B \
+	mkpart primary 13631488B 30408703B \
+	mkpart primary 30408704B 42991615B \
+	mkpart primary 42991616B 55574527B \
+	mkpart primary 55574528B 89128959B \
+	mkpart primary 89128960B 156237823B \
+	mkpart primary ext4 156237824B 290455551B \
+	mkpart primary ext4 290455552B 1360003071B \
+	mkpart primary ext4 1360003072B 1364197375B \
+	mkpart primary 1364197376B 1368391679B \
+	mkpart primary ext4 1368391680B 3515875327B \
+	mkpart primary fat32 3515875328B 8054112255B \
+	mkpart primary ext4 8054112256B -1
+
