@@ -1,0 +1,45 @@
+Procedimento de duplicação de SDCARD:
+
+1) Identificar o nome do dispositivo do sdcard (/dev/sd? ou /dev/mmcblk0)
+
+	Para descobrir execute
+
+	ls /dev/
+
+	Insira o sdcard e execute novamente
+
+	ls /dev/
+
+	Vai perceber que apareceram novos arquivos. Podem aparecer "mmcblk0" e "mmcblk0p1" ou "sdc" e "sdc1". No primeiro caso o nome do dispositivo será "mmcblk0" e no segundo caso será "sdc". Anotar este nome para utilizar no comando de cópia, chamaremos de "DISPOSITIVO".
+
+2) Copiar a imagem para o computador
+
+	Inserir o sdcard no computador. Pode utilizar o ambiente gráfico para copiar o arquivo "ccit_sdcard.img" para o diretório "home" deste usuário (pasta pessoal).
+
+3) Gerar o sdcard clone
+
+	Inserir um sdcard maior que 8 GB no computador e executar a cópia
+
+	sudo dd if=ccit_sdcard.img of= /dev/DISPOSITIVO
+
+	Lembre de substituir o DISPOSITIVO pelo nome encontrado no item 1.
+
+
+
+Procedimento para instalação do sdcard no CCIT H2.1
+
+1) Inserir o sdcard clonado no CCIT H2.1 (precisa abrir o equipamento)
+
+2) Atualizar o boot do equipamento executando o seguinte comando
+
+	Caso esteja conectado via computador
+
+		adb shell dd if=/dev/block/mmcblk0p6 of=/dev/block/rknand_boot
+
+	Caso esteja conectado via rede ou via terminal do tablet
+
+		sudo dd if=/dev/block/mmcblk0p6 of=/dev/block/rknand_boot
+
+3) Reiniciar o equipamento
+ 
+
