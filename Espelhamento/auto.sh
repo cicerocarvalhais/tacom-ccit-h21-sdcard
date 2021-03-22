@@ -1,6 +1,11 @@
 # Pause
 read -r -p "AGUARDAR SISTEMA NO TABLET SUBIR E DESMONTAR SDCARD - Pressione [Enter] para continuar..." key
 
+# Permitir previlégio de execução
+chmod +x auto.sh
+chmod +x parted
+chmos +x busybox2
+
 # Copiar parted
 adb push parted /cache/recovery/parted
 adb shell chmod 755 /cache/recovery/parted
